@@ -16,7 +16,7 @@
               </li>
               <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                 <ul class="nav-submenu menu-content">
-                  <li><a href="user-profile.html">Registered</a></li>
+                  <li><a href="/registered">Registered</a></li>
                   <li><a href="edit-profile.html">Active User</a></li>
                   <li><a href="user-cards.html">Inactive User</a></li>
                 </ul>

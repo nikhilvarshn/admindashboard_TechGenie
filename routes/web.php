@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\RegisteredController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,24 @@ use App\Http\Controllers\QualificationController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
+
+
+Route::controller(RegisteredController::class)->group(function (){
+    Route::get('/registered', 'index');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/qualification', [QualificationController::class, 'index'])->name('home');
 
@@ -35,9 +54,4 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/getStudentData', 'show'); 
     Route::get('/student/edit/{id}', 'edit');
     Route::get('/student/delete/{id}', 'destroy');
-});
-
-
-Route::controller(StudentController::class)->group(function () {
-    
 });
