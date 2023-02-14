@@ -341,7 +341,6 @@ class Str
     /**
      * Wrap the string with the given strings.
      *
-     * @param  string  $value
      * @param  string  $before
      * @param  string|null  $after
      * @return string
@@ -735,9 +734,7 @@ class Str
             while (($len = strlen($string)) < $length) {
                 $size = $length - $len;
 
-                $bytesSize = (int) ceil(($size) / 3) * 3;
-
-                $bytes = random_bytes($bytesSize);
+                $bytes = random_bytes($size);
 
                 $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
             }
@@ -1015,7 +1012,6 @@ class Str
      * @param  string  $title
      * @param  string  $separator
      * @param  string|null  $language
-     * @param  array<string, string>  $dictionary
      * @return string
      */
     public static function slug($title, $separator = '-', $language = 'en', $dictionary = ['@' => 'at'])
@@ -1075,7 +1071,7 @@ class Str
      */
     public static function squish($value)
     {
-        return preg_replace('~(\s|\x{3164})+~u', ' ', preg_replace('~^[\s\x{FEFF}]+|[\s\x{FEFF}]+$~u', '', $value));
+        return preg_replace('~(\s|\x{3164})+~u', ' ', preg_replace('~^[\s﻿]+|[\s﻿]+$~u', '', $value));
     }
 
     /**
@@ -1127,12 +1123,11 @@ class Str
      * @param  string  $string
      * @param  int  $start
      * @param  int|null  $length
-     * @param  string  $encoding
      * @return string
      */
-    public static function substr($string, $start, $length = null, $encoding = 'UTF-8')
+    public static function substr($string, $start, $length = null)
     {
-        return mb_substr($string, $start, $length, $encoding);
+        return mb_substr($string, $start, $length, 'UTF-8');
     }
 
     /**
@@ -1148,9 +1143,9 @@ class Str
     {
         if (! is_null($length)) {
             return substr_count($haystack, $needle, $offset, $length);
+        } else {
+            return substr_count($haystack, $needle, $offset);
         }
-
-        return substr_count($haystack, $needle, $offset);
     }
 
     /**

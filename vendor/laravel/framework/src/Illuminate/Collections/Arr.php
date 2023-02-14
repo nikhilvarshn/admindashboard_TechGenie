@@ -617,7 +617,7 @@ class Arr
      *
      * @param  array  $array
      * @param  int|null  $number
-     * @param  bool  $preserveKeys
+     * @param  bool|false  $preserveKeys
      * @return mixed
      *
      * @throws \InvalidArgumentException
@@ -732,18 +732,6 @@ class Arr
     }
 
     /**
-     * Sort the array in descending order using the given callback or "dot" notation.
-     *
-     * @param  array  $array
-     * @param  callable|array|string|null  $callback
-     * @return array
-     */
-    public static function sortDesc($array, $callback = null)
-    {
-        return Collection::make($array)->sortByDesc($callback)->all();
-    }
-
-    /**
      * Recursively sort an array by keys and values.
      *
      * @param  array  $array
@@ -793,29 +781,6 @@ class Arr
         }
 
         return implode(' ', $classes);
-    }
-
-    /**
-     * Conditionally compile styles from an array into a style list.
-     *
-     * @param  array  $array
-     * @return string
-     */
-    public static function toCssStyles($array)
-    {
-        $styleList = static::wrap($array);
-
-        $styles = [];
-
-        foreach ($styleList as $class => $constraint) {
-            if (is_numeric($class)) {
-                $styles[] = Str::finish($constraint, ';');
-            } elseif ($constraint) {
-                $styles[] = Str::finish($class, ';');
-            }
-        }
-
-        return implode(' ', $styles);
     }
 
     /**
