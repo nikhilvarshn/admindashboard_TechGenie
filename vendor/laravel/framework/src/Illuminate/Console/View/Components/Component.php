@@ -81,14 +81,12 @@ abstract class Component
     protected function mutate($data, $mutators)
     {
         foreach ($mutators as $mutator) {
-            $mutator = new $mutator;
-
             if (is_iterable($data)) {
                 foreach ($data as $key => $value) {
-                    $data[$key] = $mutator($value);
+                    $data[$key] = app($mutator)->__invoke($value);
                 }
             } else {
-                $data = $mutator($data);
+                $data = app($mutator)->__invoke($data);
             }
         }
 

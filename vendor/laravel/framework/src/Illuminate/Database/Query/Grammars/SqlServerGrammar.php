@@ -375,7 +375,7 @@ class SqlServerGrammar extends Grammar
     /**
      * Compile the random statement into SQL.
      *
-     * @param  string|int  $seed
+     * @param  string  $seed
      * @return string
      */
     public function compileRandom($seed)

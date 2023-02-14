@@ -68,7 +68,6 @@ class ServeCommand extends Command
     public static $passthroughVariables = [
         'APP_ENV',
         'LARAVEL_SAIL',
-        'PATH',
         'PHP_CLI_SERVER_WORKERS',
         'PHP_IDE_CONFIG',
         'SYSTEMROOT',
@@ -301,7 +300,7 @@ class ServeCommand extends Command
     protected function getDateFromLine($line)
     {
         $regex = env('PHP_CLI_SERVER_WORKERS', 1) > 1
-            ? '/^\[\d+]\s\[([a-zA-Z0-9: ]+)\]/'
+            ? '/^\[\d+]\s\[(.*)]/'
             : '/^\[([^\]]+)\]/';
 
         preg_match($regex, $line, $matches);

@@ -10,7 +10,6 @@ use Illuminate\Contracts\Mail\Mailable as MailableContract;
 use Illuminate\Contracts\Queue\Factory as Queue;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
@@ -259,7 +258,7 @@ class Mailable implements MailableContract, Renderable
      */
     protected function newQueuedJob()
     {
-        return Container::getInstance()->make(SendQueuedMailable::class, ['mailable' => $this])
+        return (new SendQueuedMailable($this))
                     ->through(array_merge(
                         method_exists($this, 'middleware') ? $this->middleware() : [],
                         $this->middleware ?? []
@@ -578,10 +577,6 @@ class Mailable implements MailableContract, Renderable
      */
     public function to($address, $name = null)
     {
-        if (! $this->locale && $address instanceof HasLocalePreference) {
-            $this->locale($address->preferredLocale());
-        }
-
         return $this->setAddress($address, $name, 'to');
     }
 
@@ -693,13 +688,6 @@ class Mailable implements MailableContract, Renderable
                 'address' => $recipient->email,
             ];
         }
-
-        $this->{$property} = collect($this->{$property})
-            ->reverse()
-            ->unique('address')
-            ->reverse()
-            ->values()
-            ->all();
 
         return $this;
     }
@@ -1267,7 +1255,7 @@ class Mailable implements MailableContract, Renderable
     }
 
     /**
-     * Format the mailable recipient for display in an assertion message.
+     * Format the mailable recipeint for display in an assertion message.
      *
      * @param  object|array|string  $address
      * @param  string|null  $name
@@ -1312,9 +1300,8 @@ class Mailable implements MailableContract, Renderable
     {
         [$html, $text] = $this->renderForAssertions();
 
-        PHPUnit::assertStringContainsString(
-            $string,
-            $html,
+        PHPUnit::assertTrue(
+            str_contains($html, $string),
             "Did not see expected text [{$string}] within email body."
         );
 
@@ -1331,9 +1318,8 @@ class Mailable implements MailableContract, Renderable
     {
         [$html, $text] = $this->renderForAssertions();
 
-        PHPUnit::assertStringNotContainsString(
-            $string,
-            $html,
+        PHPUnit::assertFalse(
+            str_contains($html, $string),
             "Saw unexpected text [{$string}] within email body."
         );
 
@@ -1365,9 +1351,8 @@ class Mailable implements MailableContract, Renderable
     {
         [$html, $text] = $this->renderForAssertions();
 
-        PHPUnit::assertStringContainsString(
-            $string,
-            $text,
+        PHPUnit::assertTrue(
+            str_contains($text, $string),
             "Did not see expected text [{$string}] within text email body."
         );
 
@@ -1384,9 +1369,8 @@ class Mailable implements MailableContract, Renderable
     {
         [$html, $text] = $this->renderForAssertions();
 
-        PHPUnit::assertStringNotContainsString(
-            $string,
-            $text,
+        PHPUnit::assertFalse(
+            str_contains($text, $string),
             "Saw unexpected text [{$string}] within text email body."
         );
 
