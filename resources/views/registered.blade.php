@@ -32,6 +32,7 @@
                                     <td>{{ $value->email }}</td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
