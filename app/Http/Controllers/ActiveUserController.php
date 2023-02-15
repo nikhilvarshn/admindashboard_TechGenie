@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RegisteredController extends Controller
+class ActiveUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class RegisteredController extends Controller
      */
     public function index()
     {
-        // return view('registered');
         $users = DB::select('select * from registers');
-        return view('/registered', ['users'=>$users]);
+        return view('/activeuser', ['users'=>$users]);
     }
 
     /**
@@ -37,7 +36,7 @@ class RegisteredController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
