@@ -29,6 +29,7 @@ Route::controller(RegisteredController::class)->group(function (){
     Route::get('/getRegisteredData', 'show');
 });
 
+
 Route::controller(ActiveUserController::class)->group(function (){
     Route::get('/activeuser', 'index');
 });
@@ -36,6 +37,7 @@ Route::controller(ActiveUserController::class)->group(function (){
 Route::controller(InactiveUserController::class)->group(function (){
     Route::get('/inactiveuser', 'index');
 });
+
 
 
 

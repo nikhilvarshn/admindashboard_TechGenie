@@ -25,6 +25,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($users as $value)
+                                <tr>
+                                    <td>USER-{{ $value->id }}</td>
+                                    <td>{{ $value->full_name }}</td>
+                                    <td>{{ $value->email }}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
