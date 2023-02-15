@@ -1,15 +1,14 @@
 @extends('layouts.main')
 
 @section('main-section')
-
 <div class="page-body">
     <!-- Container-fluid starts-->
     <div class="container-fluid dashboard-default-sec">
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="display: inline;">Registered</h4>
-                    <button style="display: inline;float:right;" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Add New Qualification</button>
+                    <h4 style="display: inline;">Inactive User</h4>
+                    {{-- <button style="display: inline;float:right;" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Add New Qualification</button> --}}
                 </div>
             </div> 
             <div class="card">
@@ -18,10 +17,10 @@
                         <table class="display" id="data-table">
                             <thead>
                                 <tr>
-                                    <th>Sr.No</th>
-                                    <th>Name</th>
+                                    <th>USER ID</th>
+                                    <th>Full Name </th>
                                     <th>Email</th>
-                                    {{-- <th>Updated At</th> --}}
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,18 +29,20 @@
                                     <td>USER-{{ $value->id }}</td>
                                     <td>{{ $value->full_name }}</td>
                                     <td>{{ $value->email }}</td>
+                                    <td>{{ $value->status}}
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
     {{-- @include('modals/qualification_addedit') --}}
     <!-- Container-fluid Ends-->
 </div>
+
 @endsection
 
 @section('script')
@@ -49,14 +50,11 @@
         var table = $('#data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ url('/getMentorData') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'full_name', name: 'full_name'},
                 {data: 'email', name: 'email'},
-                // {data: 'status', name: 'status', orderable: false, searchable: false},
-                // {data: 'updated_at', name: 'Last Update', orderable: false, searchable: false},
-                // {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'status', name: 'status'},
             ],
 
             language: {
@@ -65,5 +63,6 @@
             }
 		});
 </script>
+
 
 @endsection
