@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ActiveUserController;
+use App\Http\Controllers\InactiveUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
@@ -25,6 +27,13 @@ Route::controller(RegisteredController::class)->group(function (){
     Route::get('/registered', 'index');
 });
 
+Route::controller(ActiveUserController::class)->group(function (){
+    Route::get('/activeuser', 'index');
+});
+
+Route::controller(InactiveUserController::class)->group(function (){
+    Route::get('/inactiveuser', 'index');
+});
 
 
 
