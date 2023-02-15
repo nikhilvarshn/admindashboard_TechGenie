@@ -13,7 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_id');
+            $table->string('plan_id');
+            $table->string('purchase_date');
+            $table->string('expire_date');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('transactions');
     }
 };
