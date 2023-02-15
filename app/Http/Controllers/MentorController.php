@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Registered;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
-class RegisteredController extends Controller
+class MentorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,7 @@ class RegisteredController extends Controller
      */
     public function index()
     {
-        return view('registered');
-        // $users = DB::select('select * from registers');
-        // return view('/registered', ['users'=>$users]);
+        return view('mentor');
     }
 
     /**
@@ -39,7 +36,26 @@ class RegisteredController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request, ['title'=>'required','status'=>'required']); 
+
+        // $mentor = Mentor::updateOrCreate(
+        //                             ['id' => $request->mentor_id],
+        //                             [
+        //                                 'title' => ucwords($request->title),
+        //                                 'status' => $request->status,
+        //                             ]
+        //                         );       
         
+        // if($request->mentor_id){
+        //     $msg = "Updated Successfully.";
+        // }
+        // else{
+        //     $mentor = Mentor::find($mentor->id);
+        //     $mentor->stdid = "MTR-".$mentor->id;
+        //     $mentor->save();
+        //     $msg = "Added Successfully";
+        // }
+        // return response()->json(['msg'=>$msg]);
     }
 
     /**
@@ -48,9 +64,9 @@ class RegisteredController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $data = Registered::latest()->get();  
+        $data = Mentor::latest()->get();  
         
         return DataTables::of($data)
             ->addIndexColumn()
@@ -77,7 +93,7 @@ class RegisteredController extends Controller
 
             //     return $btn;
             // })
-            // ->rawColumns(['status', 'action'])
+            ->rawColumns(['status', 'action'])
             ->make(true);
     }
 
@@ -89,7 +105,8 @@ class RegisteredController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $data = Mentor::find($id);  
+        // return response()->json($data);
     }
 
     /**
@@ -112,6 +129,7 @@ class RegisteredController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $del = Mentor::find($id)->delete();
+        // return response()->json(['success'=>'Mentor deleted successfully.']);
     }
 }
