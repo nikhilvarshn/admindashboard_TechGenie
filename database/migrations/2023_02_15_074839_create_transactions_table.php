@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('plan_id');
             $table->string('purchase_date');
             $table->string('expire_date');
+            $table->string('plan_status')->default('1');
             $table->timestamps();
         });
     }

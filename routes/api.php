@@ -19,3 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('buyplan',[APIController::class,'userdetails']);
+Route::post('finduserdetails',[APIController::class,'finduserdetail']);
+Route::post('checkdata',[APIController::class,'checkdata']);
+Route::post('findplanstatus',[APIController::class,'findplanstatus']);
