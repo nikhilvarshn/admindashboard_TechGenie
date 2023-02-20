@@ -14,16 +14,16 @@
                   <h6>User's </h6>
                 </div>
               </li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/registered"><i data-feather="users"></i><span>Total User</span></a></li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/activeuser"><i data-feather="users"></i><span>Active User</span></a></li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/inactiveuser"><i data-feather="users"></i><span>Inactive User</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/total_users"><i data-feather="users"></i><span>Total User</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/activeuser"><i data-feather="users"></i><span>Active User</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/inactiveuser"><i data-feather="users"></i><span>Inactive User</span></a></li>
 
               <li class="sidebar-main-title">
                 <div>
-                  <h6>Mentor's</h6>
+                  <h6>Transaction's</h6>
                 </div>
               </li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/#"><i data-feather="users"></i><span>Mentor</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/transaction_history"><i data-feather="users"></i><span>Transaction History</span></a></li>
               {{-- <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                 <ul class="nav-submenu menu-content">
                   <li><a href="/registered">Registered</a></li>
@@ -31,8 +31,12 @@
                   <li><a href="/inactiveuser">Inactive User</a></li>
                 </ul>
               </li> --}}
-
-              <br><br>
+              <li class="sidebar-main-title">
+                <div>
+                  <h6>Plan's</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/plans"><i data-feather="users"></i><span>Plan's</span></a></li>
               <li class="sidebar-main-title">
                 <div>
                   <h6>General</h6>

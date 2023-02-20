@@ -9,6 +9,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\RegisteredController;
+use App\Http\Controllers\Backend\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,14 +31,18 @@ Route::controller(RegisteredController::class)->group(function (){
 });
 
 
-Route::controller(ActiveUserController::class)->group(function (){
-    Route::get('/activeuser', 'index');
-});
+// Route::controller(ActiveUserController::class)->group(function (){
+//     Route::get('/activeuser', 'index');
+// });
 
-Route::controller(InactiveUserController::class)->group(function (){
-    Route::get('/inactiveuser', 'index');
-});
-
+// Route::controller(InactiveUserController::class)->group(function (){
+//     Route::get('/inactiveuser', 'index');
+// });
+Route::get('/total_users',[MainController::class,'totaluser']);
+Route::get('/activeuser',[MainController::class,'activeuser']);
+Route::get('/inactiveuser',[MainController::class,'inactiveuser']);
+Route::get('/transaction_history',[MainController::class,'transaction_history']);
+Route::get('/plans',[MainController::class,'plans']);
 
 
 

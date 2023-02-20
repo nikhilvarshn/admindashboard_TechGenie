@@ -232,4 +232,11 @@ class APIController extends Controller
             '
         ]);
     }
+    // public function getuser(Request $req){
+    //     $u=Register::all();
+    //     if($u){
+
+    //     }
+
+    // }
 }
