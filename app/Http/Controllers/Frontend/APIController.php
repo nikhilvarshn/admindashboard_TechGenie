@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Userdetail;
 use App\Models\Plan;
 use App\Models\Transaction;
+use App\Models\Ticket;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 class APIController extends Controller
 {
     public function userdetails(Request $req){
@@ -232,11 +234,107 @@ class APIController extends Controller
             '
         ]);
     }
-    // public function getuser(Request $req){
-    //     $u=Register::all();
-    //     if($u){
-
-    //     }
-
-    // }
+    //check plan expire date with current date
+    public function checkExipredateOfPlan($u_id){
+        $user=Userdetail::where('user_id',$u_id)->where('plan_status','1')->first();
+        if($user){
+            $ex=$user->expire_date;
+             $vv=Carbon::now();
+            if($vv>$ex){
+                $user->plan_status='0';
+                $user->save();
+                $tr=Transaction::where('user_id',$u_id)->where('plan_status','1')->first();
+                if($tr){
+                    $tr->plan_status='0';
+                    $tr->save();
+                }
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+   public function raiseticket(Request $req){
+    $req->validate([
+        'user_id'=>'required',
+        'category'=>'required',
+        'question'=>'required',
+        'date_and_time'=>'required'
+    ]);
+    $isPlanActive=$this->checkExipredateOfPlan($req->user_id);
+    if($isPlanActive){
+            $u=Ticket::create([
+                'user_id'=>$req->user_id,
+                'category'=>$req->category,
+                'question'=>$req->question,
+                'date_and_time'=>$req->date_and_time
+            ]);
+            if($u){
+                return response()->json([
+                    'msg'=>'your ticket raised!',
+                    'data'=>$u,
+                    'status'=>true,
+                    'error'=>false
+                ]);
+            }
+            return response()->json([
+                'msg'=>'Sorry some error from your side!',
+                'data'=>$u,
+                'status'=>true,
+                'error'=>true
+            ]);
+}
+else{
+    return response()->json([
+        'msg'=>'Sorry your plan expire!',
+        'data'=>null,
+        'status'=>true,
+        'error'=>true
+    ]);
+}
+    
+    }
+    public function fetchTicket(Request $req){
+        $req->validate([
+            'user_id'=>'required',
+        ]);
+        $t=Ticket::where('user_id',$req->user_id)->get();
+        if($t){
+            return response()->json([
+                'msg'=>'data found!',
+                'data'=>$t,
+                'status'=>true,
+                'error'=>false,
+            ]);
+        }
+        return response()->json([
+            'msg'=>'data not found!',
+            'data'=>$t,
+            'status'=>true,
+            'error'=>true,
+        ]) ;
+    }
+    public function getTransaction(Request $req){
+        $req->validate([
+            'user_id'=>'required',
+        ]);
+        // $t=Transaction::where('user_id',$req->user_id)->get();
+        $t=DB::table('transactions')
+        ->join('plans','plans.plan_id','=','transactions.plan_id')
+        ->select('transactions.*','plans.*')->where('user_id',$req->user_id)->get();
+        if($t){
+            return response()->json([
+                'msg'=>'data found!',
+                'data'=>$t,
+                'status'=>true,
+                'error'=>false,
+            ]);
+        }
+        return response()->json([
+            'msg'=>'data not found!',
+            'data'=>$t,
+            'status'=>true,
+            'error'=>true,
+        ]) ;
+    }
 }

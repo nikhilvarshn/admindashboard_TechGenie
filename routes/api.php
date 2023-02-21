@@ -22,3 +22,6 @@ Route::post('buyplan',[APIController::class,'userdetails']);
 Route::post('finduserdetails',[APIController::class,'finduserdetail']);
 Route::post('checkdata',[APIController::class,'checkdata']);
 Route::post('findplanstatus',[APIController::class,'findplanstatus']);
+Route::post('raiseticket',[APIController::class,'raiseticket']);
+Route::post('fetchticket',[APIController::class,'fetchTicket']);
+Route::post('get_transaction',[APIController::class,'getTransaction']);
