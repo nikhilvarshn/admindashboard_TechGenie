@@ -15,6 +15,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    {{-- <th>Updated At</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
