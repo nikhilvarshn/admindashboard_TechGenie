@@ -13,20 +13,9 @@ class Mentor extends Model
 
     protected $table = 'mentors';
     protected $fillable = [
-        'stdid',
-        'studentname',
-        'fathername',
-        'mothername',
-        'dob',
-        'age',
-        'gender',
-        'bloodgroup',
-        'permanentaddress',
-        'city',
-        'state',
-        'pincode',
-        'religion',
-        'mobilenumber',
+        'mtrid',
+        'title',
+        'category',
         'status',
     ];
 }

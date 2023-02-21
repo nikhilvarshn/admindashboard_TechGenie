@@ -19,7 +19,9 @@
                     <thead>
                         <tr>
                             <th>Sr.No</th>
-                            <th>Qualification</th>
+                            <th>MTR ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
                             <th>Status</th>
                             <th>Updated At</th>
                             <th>Action</th>
@@ -46,11 +48,11 @@
     $(document).ready(function() {
         $(document).on('click','#saveBtn' ,function (e) {
             e.preventDefault();
-            $.ajax({ type: "POST", url: "/qualification", data: $('#dataForm').serialize() , dataType: "json",
+            $.ajax({ type: "POST", url: "/mentor", data: $('#dataForm').serialize() , dataType: "json",
                 success: function(response){
                     $('#title').val("");
                     swal({   title: response.msg,   type: "success", text: "Data filled ", confirmButtonColor: "#71aa68",   },function(){table.draw(); });
-                    $('#qualification_id').val("");
+                    $('#mentor_id').val("");
                     $('.bd-example-modal-lg').modal('hide');
                 },
                 error: function (response) {
@@ -68,10 +70,12 @@
         var table = $('#data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ url('getQualificationData') }}",
+            ajax: "{{ url('getMentorData') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'mtrid', name: 'mtrid'},
                 {data: 'title', name: 'title'},
+                {data: 'category', name: 'category'},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
                 {data: 'updated_at', name: 'Last Update', orderable: false, searchable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -83,29 +87,30 @@
             }
 		});
 
-        $('body').on('click', '.editqualification', function () {
+        $('body').on('click', '.editmentor', function () {
             var product_id = $(this).data('id');
-            $.get("{{ url('qualification/edit') }}" +'/' + product_id, function (data) { 
+            $.get("{{ url('mentor/edit') }}" +'/' + product_id, function (data) { 
                 $('#saveBtn').val("Save Changes");
                 $('#ajaxModel').modal('show');
-                $('#qualification_id').val(product_id);
-                $('#title').val(data.title); 
+                $('#mentor_id').val(product_id);
+                $('#title').val(data.title);
+                $('#category').val(data.category);
                 $('#status').val(data.status);
                 $('.standardSelect').selectpicker('refresh');
             })
 		});
 
-        $('body').on('click', '.delqualification', function () {
+        $('body').on('click', '.delmentor', function () {
             var product_id = $(this).data("id");
-            swal({   title: "Are You Sure", text: "College Central Management System",  type: "warning",    showCancelButton: true,    
+            swal({   title: "Are You Sure", text: "Delete Mentor Data",  type: "warning",    showCancelButton: true,    
                 confirmButtonColor: "#e6b034",  cancelButtonText: "Cancel", confirmButtonText: "Delete", closeOnConfirm: false, closeOnCancel: true 
             },
             function (isConfirm){ 
                 if(isConfirm){
-                    swal({    title: "Deleting Data ...", text: "Manufacturing Management System",  showConfirmButton: false });
-                    $.ajax({type: "GET",url: "{{ url('qualification/delete') }}"+'/'+product_id,
+                    swal({    title: "Deleting Data ...",   showConfirmButton: false });
+                    $.ajax({type: "GET",url: "{{ url('mentor/delete') }}"+'/'+product_id,
                     success: function (data) {
-                        swal({   title: data.success ,   type: "success", text: "Manufacturing Management System", confirmButtonColor: "#71aa68",   },
+                        swal({   title: data.success ,   type: "success", confirmButtonColor: "#71aa68",},
                             function(){table.draw(); });
                         },
                         error: function (data) {
@@ -118,16 +123,19 @@
     });
     
     function reset_modal() {
-        $("#qualification_id").val("");
+        $("#mentor_id").val("");
         $("#name").val("");
+        $("#category").val("");
         $("#status").val("");
         
         $('#ajaxModel').modal('hide');
         
         $("#name").removeClass("is-invalid");
+        $("#category").removeClass("is-invalid");
         $("#status").removeClass("is-invalid");
         
         $("#name-error").html("");
+        $("#category-error").html("");
         $("#status-error").html("");
         
         $('#saveBtn').html('Save Changes');

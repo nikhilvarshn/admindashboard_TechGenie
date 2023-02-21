@@ -23,7 +23,18 @@
                   <h6>Mentor's</h6>
                 </div>
               </li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/#"><i data-feather="users"></i><span>Mentor</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/mentor"><i data-feather="users"></i><span>Mentor</span></a></li>
+              <li class="sidebar-main-title">
+                <div>
+                  <h6>Ticket's</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="totaltickets"><i data-feather="users"></i><span>Total Ticket Generate</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="raisedtickets"><i data-feather="users"></i><span>Raised Tickets</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="closedtickets"><i data-feather="users"></i><span>Closed Tickets</span></a></li>
+
+
+
               {{-- <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                 <ul class="nav-submenu menu-content">
                   <li><a href="/registered">Registered</a></li>

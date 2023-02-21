@@ -7,7 +7,7 @@
     <meta name="description" content="viho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../img/techgenie_logo_56.png" type="image/x-icon">
     <link rel="shortcut icon" href="../img/techgenie_logo_56.png" type="image/x-icon">
     <title>TechGenie Admin Dashboard</title>
     <!-- Google font-->
@@ -41,6 +41,7 @@
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
     <!-- Loader starts-->

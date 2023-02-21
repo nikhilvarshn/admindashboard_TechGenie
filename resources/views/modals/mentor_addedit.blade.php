@@ -22,8 +22,14 @@
                             </div>
 
                             <div class="col-sm-4 col-xs-12">
+                                <label for="category">Category  :</label>
+                                {!! Form::text('category', '', ['class'=>"form-control", 'id'=>"category", 'placeholder'=>"Enter Category of Mentor", 'required']); !!} <br>
+                                <span class="text-danger" id="category-error"></span>
+                            </div>
+
+                            <div class="col-sm-4 col-xs-12">
                                 <label for="status">Status :</label>
-                                {!! Form::select('status', $status, '', ['class'=>'standardSelect form-control', 'title'=>'Select ', 'data-live-search'=>'true', 'id'=>'status' , 'data-style'=>'btn-sp', 'data-dropup-auto'=>'false', 'data-size'=>'5']) !!}<br>
+                                {!! Form::select('status', $status, '', ['class'=>'standardSelect form-control', 'title'=>'Select ', 'placeholder'=>"Select one", 'data-live-search'=>'true', 'id'=>'status' , 'data-style'=>'btn-sp', 'data-dropup-auto'=>'false', 'data-size'=>'5']) !!}<br>
                                 <span class="text-danger" id="status-error"></span>
                             </div>
 
@@ -34,7 +40,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" onclick="closeModal()">Close</button>
-                {!! Form::submit('Add Qualification', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
+                {!! Form::submit('Add Mentor', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
             </div>
         </div>
     </div>
