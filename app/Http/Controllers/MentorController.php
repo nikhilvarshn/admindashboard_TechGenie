@@ -37,6 +37,8 @@ class MentorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title'=>'required',
+                                    'email'=>'required',
+                                    'password'=>'required',
                                     'category'=>'required',
                                     'status'=>'required'
                                 ]); 
@@ -45,6 +47,8 @@ class MentorController extends Controller
                                     ['id' => $request->mentor_id],
                                     [
                                         'title' => ucwords($request->title),
+                                        'email' => ($request->email),
+                                        'password' => ($request->password),
                                         'category' => ucwords($request->category),
                                         'status' => $request->status,
                                     ]

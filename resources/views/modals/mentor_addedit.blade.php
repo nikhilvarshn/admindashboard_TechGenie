@@ -22,6 +22,18 @@
                             </div>
 
                             <div class="col-sm-4 col-xs-12">
+                                <label for="email">Email  :</label>
+                                {!! Form::text('email', '', ['class'=>"form-control", 'id'=>"email", 'placeholder'=>"Enter Mentor Email", 'required']); !!} <br>
+                                <span class="text-danger" id="email-error"></span>
+                            </div>
+
+                            <div class="col-sm-4 col-xs-12">
+                                <label for="password">Password  :</label>
+                                {!! Form::text('password', '', ['class'=>"form-control", 'id'=>"password", 'placeholder'=>"Enter Mentor Password", 'required']); !!} <br>
+                                <span class="text-danger" id="password-error"></span>
+                            </div>
+
+                            <div class="col-sm-4 col-xs-12">
                                 <label for="category">Category  :</label>
                                 {!! Form::text('category', '', ['class'=>"form-control", 'id'=>"category", 'placeholder'=>"Enter Category of Mentor", 'required']); !!} <br>
                                 <span class="text-danger" id="category-error"></span>

@@ -21,6 +21,8 @@
                             <th>Sr.No</th>
                             <th>MTR ID</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
                             <th>Category</th>
                             <th>Status</th>
                             <th>Updated At</th>
@@ -75,6 +77,8 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'mtrid', name: 'mtrid'},
                 {data: 'title', name: 'title'},
+                {data: 'email', name: 'email'},
+                {data: 'password', name: 'password'},
                 {data: 'category', name: 'category'},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
                 {data: 'updated_at', name: 'Last Update', orderable: false, searchable: false},
@@ -94,6 +98,8 @@
                 $('#ajaxModel').modal('show');
                 $('#mentor_id').val(product_id);
                 $('#title').val(data.title);
+                $('#email').val(data.email);
+                $('#password').val(data.password);
                 $('#category').val(data.category);
                 $('#status').val(data.status);
                 $('.standardSelect').selectpicker('refresh');
@@ -125,16 +131,22 @@
     function reset_modal() {
         $("#mentor_id").val("");
         $("#name").val("");
+        $("#email").val("");
+        $("#password").val("");
         $("#category").val("");
         $("#status").val("");
         
         $('#ajaxModel').modal('hide');
         
         $("#name").removeClass("is-invalid");
+        $("#email").removeClass("is-invalid");
+        $("#password").removeClass("is-invalid");
         $("#category").removeClass("is-invalid");
         $("#status").removeClass("is-invalid");
         
         $("#name-error").html("");
+        $("#email-error").html("");
+        $("#password-error").html("");
         $("#category-error").html("");
         $("#status-error").html("");
         

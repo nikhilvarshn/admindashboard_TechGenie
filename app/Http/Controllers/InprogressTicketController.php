@@ -12,6 +12,6 @@ class InprogressTicketController extends Controller
         $users = DB::table('tickets')
             ->where('ticket_status', 2)
             ->get();
-        return view('raisedticket', compact('users'));
+        return view('inprogress', compact('users'));
     }
 }
