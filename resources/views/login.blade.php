@@ -48,7 +48,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-6">
-                    <img class="bg-img-cover bg-center" src="../assets/images/login/3.jpg" alt="looginpage">
+                    <img class="bg-img-cover bg-center" src="../img/login2.png" alt="looginpage">
                 </div>
                 <div class="col-xl-6 p-0">    
                     <div class="login-card">

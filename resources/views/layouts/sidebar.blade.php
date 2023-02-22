@@ -4,11 +4,16 @@
       <div style="height:100%;">
         <div class="main-navbar" style="height:100%;">
           <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
-          <div id="mainnav" style="height:100%;">           
+          <div id="mainnav" style="height:100%;">
+            <style>
+              li{
+                  margin-bottom: 5px;
+                }
+              </style>           
             <ul class="nav-menu custom-scrollbar" style="height:100%;">
-              <li class="back-btn">
+              {{-- <li class="back-btn">
                 <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-              </li>
+              </li> --}}
               <li class="sidebar-main-title">
                 <div>
                   <h6>User's </h6>
@@ -31,6 +36,7 @@
               </li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="totaltickets"><i data-feather="users"></i><span>Total Ticket Generate</span></a></li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="raisedtickets"><i data-feather="users"></i><span>Raised Tickets</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="inprogresstickets"><i data-feather="users"></i><span>Inprogress Tickets</span></a></li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="closedtickets"><i data-feather="users"></i><span>Closed Tickets</span></a></li>
 
 
@@ -43,7 +49,7 @@
                 </ul>
               </li> --}}
 
-              <br><br>
+              {{-- <br><br>
               <li class="sidebar-main-title">
                 <div>
                   <h6>General</h6>
@@ -168,7 +174,7 @@
                   <li><a href="#">Shadow</a></li>
                   <li><a href="#">Lists</a></li>
                 </ul>
-              </li>
+              </li> --}}
             </ul>
           </div>
           <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

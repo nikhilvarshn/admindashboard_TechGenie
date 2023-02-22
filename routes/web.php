@@ -63,6 +63,10 @@ Route::controller(ClosedTicketController::class)->group(function () {
     Route::get('/closedtickets', 'index');
 });
 
+Route::controller(InprogressTicketController::class)->group(function () {
+    Route::get('/inprogresstickets', 'index');
+});
+
 Route::controller(LoginController::class)->group(function (){
     Route::get('/login', 'index');
 });

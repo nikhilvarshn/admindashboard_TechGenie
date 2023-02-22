@@ -40,11 +40,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" onclick="closeModal()">Close</button>
-<<<<<<< HEAD
                 {!! Form::submit('Add Mentor', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
-=======
-                {!! Form::submit('Add Qualification', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
->>>>>>> e8b2ffb20ea4faeeb26e0a4b41ea11b28ba5f6c7
             </div>
         </div>
     </div>
