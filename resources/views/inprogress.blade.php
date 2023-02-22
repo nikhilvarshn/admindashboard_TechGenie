@@ -65,12 +65,15 @@ $(document).ready(function(){
         });
         v.cells(null, 10, { search: 'applied', order: 'applied' }).every(function (cell) {
             let c=this.data();
-            console.log(typeof c);
             if(c==='1'){
-                this.data('Active');
+                this.data('<span style="color:green">Raised</span>');
             }
-            if(c==='0'){
-                this.data('InActive');
+            if(c==='2'){
+                this.data('<span style="color:yellow">Inprocessing</span>');
+            }
+            if(c==='3'){
+                this.data('<span style="color:red">Closed</span>');
+
             }
         });
     }).draw();

@@ -55,16 +55,18 @@ $(document).ready(function(){
         v.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
             this.data(i++);
         });
-        // v.cells(null, 12, { search: 'applied', order: 'applied' }).every(function (cell) {
-        //     let c=this.data();
-        //     console.log(typeof c);
-        //     if(c==='1'){
-        //         this.data('Active');
-        //     }
-        //     if(c==='0'){
-        //         this.data('InActive');
-        //     }
-        // });
+        v.cells(null, 10, { search: 'applied', order: 'applied' }).every(function (cell) {
+            let c=this.data();
+            if(c==='1'){
+                this.data('<span style="color:green">Raised</span>');
+            }
+            if(c==='2'){
+                this.data('<span style="color:yellow">Inprocessing</span>');
+            }
+            if(c==='3'){
+                this.data('<span style="color:red">Closed</span>');
+            }
+        });
     }).draw();
 });
 </script>

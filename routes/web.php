@@ -13,6 +13,8 @@ use App\Http\Controllers\ClosedTicketController;
 use App\Http\Controllers\InactiveUserController;
 use App\Http\Controllers\RaisedTicketController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\InprogressTicketController;
+
 
 /*
 |--------------------------------------------------------------------------
