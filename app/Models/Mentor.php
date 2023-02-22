@@ -9,24 +9,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mentor extends Model
 {
-    use HasFactory, AuditableWithDeletesTrait, SoftDeletes;
+        use HasFactory, AuditableWithDeletesTrait, SoftDeletes;
 
-    protected $table = 'mentors';
-    protected $fillable = [
-        'stdid',
-        'studentname',
-        'fathername',
-        'mothername',
-        'dob',
-        'age',
-        'gender',
-        'bloodgroup',
-        'permanentaddress',
-        'city',
-        'state',
-        'pincode',
-        'religion',
-        'mobilenumber',
+        protected $table = 'mentors';
+        protected $fillable = [
+        'mtrid',
+        'title',
+        'category',
         'status',
-    ];
+        ];
 }

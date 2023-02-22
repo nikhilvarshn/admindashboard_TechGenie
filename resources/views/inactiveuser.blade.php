@@ -17,21 +17,20 @@
                         <table class="display" id="data-table">
                             <thead>
                                 <tr>
-                                    <th>USER ID</th>
                                     <th>Full Name </th>
                                     <th>Email</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $value)
+                                {{-- @foreach($users as $value)
                                 <tr>
                                     <td>USER-{{ $value->id }}</td>
                                     <td>{{ $value->full_name }}</td>
                                     <td>{{ $value->email }}</td>
                                     <td>{{ $value->status}}
                                 </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
