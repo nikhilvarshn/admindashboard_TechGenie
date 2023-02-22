@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Register;
+use App\Models\Categorie;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
 
 
@@ -55,5 +57,33 @@ class MainController extends Controller
         $users=DB::table('plans')
         ->get();
         return view('plans',compact('users'));
+    }
+    public function totalticket(Request $req){
+        $users=DB::table('tickets')
+        ->join('registers','registers.id','=','tickets.user_id')
+        ->select('registers.*','tickets.*')->get();
+        return view('total_ticket',compact('users'));
+    }
+    public function raisedticket(Request $req){
+        $users=DB::table('tickets')
+        ->join('registers','registers.id','=','tickets.user_id')
+        ->select('registers.*','tickets.*')->where('ticket_status','1')->get();
+        return view('raised_ticket',compact('users'));
+    }
+    public function processingticket(Request $req){
+        $users=DB::table('tickets')
+        ->join('registers','registers.id','=','tickets.user_id')
+        ->select('registers.*','tickets.*')->where('ticket_status','2')->get();
+        return view('processing_ticket',compact('users'));
+    }
+    public function closedticket(Request $req){
+        $users=DB::table('tickets')
+        ->join('registers','registers.id','=','tickets.user_id')
+        ->select('registers.*','tickets.*')->where('ticket_status','3')->get();
+        return view('closed_ticket',compact('users'));
+    }
+    public function createCategory(Request $req){
+       return view('category');
+
     }
 }

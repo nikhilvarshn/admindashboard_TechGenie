@@ -36,6 +36,7 @@
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/sweetalert.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">

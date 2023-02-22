@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Userdetail;
 use App\Models\Plan;
+use App\Models\Categorie;
 use App\Models\Transaction;
 use App\Models\Ticket;
 use Carbon\Carbon;
@@ -336,5 +337,66 @@ else{
             'status'=>true,
             'error'=>true,
         ]) ;
+    }
+    public function createCategory(Request $req){
+        $req->validate([
+            'name'=>'required'
+        ]);
+        $u=Categorie::create([
+            'name'=>$req->name
+        ]);
+        if($u){
+            return response()->json([
+                'msg'=>'Category Added Successfully!',
+                'data'=>$u,
+                'status'=>true,
+                'error'=>false
+            ]);
+        }
+        return response()->json([
+            'msg'=>'Some error!',
+            'data'=>$u,
+            'status'=>true,
+            'error'=>true
+        ]);
+
+    }
+    public function showCategoryData(Request $req){
+        $u=Categorie::all();
+       if($u){
+        return response()->json([
+            'msg'=>'Data Found!',
+            'data'=>$u,
+            'status'=>true,
+            'error'=>false
+        ]);
+       }
+       return response()->json([
+        'msg'=>'Data not Found!',
+        'data'=>$u,
+        'status'=>true,
+        'error'=>true
+    ]);
+    } 
+    public function deleteCategoryData($id){
+        // $req->validate([
+        //     'id'=>'required',
+        // ]);
+        $u=Categorie::find($id);
+        if($u){
+            $u->delete();
+            return response()->json([
+                'msg'=>'Data Deleted',
+                'data'=>$u,
+                'status'=>true,
+                'error'=>false
+            ]);
+        }
+        return response()->json([
+            'msg'=>'Data not Found!',
+            'data'=>$u,
+            'status'=>true,
+            'error'=>true
+        ]);
     }
 }

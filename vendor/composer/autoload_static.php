@@ -572,6 +572,7 @@ class ComposerStaticInit49fc96cddd67832ec726460eb3eb0bda
         'App\\Models\\Register' => __DIR__ . '/../..' . '/app/Models/Register.php',
         'App\\Models\\Registered' => __DIR__ . '/../..' . '/app/Models/Registered.php',
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
+        'App\\Models\\Ticket' => __DIR__ . '/../..' . '/app/Models/Ticket.php',
         'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Userdetail' => __DIR__ . '/../..' . '/app/Models/Userdetail.php',

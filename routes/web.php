@@ -43,6 +43,11 @@ Route::get('/activeuser',[MainController::class,'activeuser']);
 Route::get('/inactiveuser',[MainController::class,'inactiveuser']);
 Route::get('/transaction_history',[MainController::class,'transaction_history']);
 Route::get('/plans',[MainController::class,'plans']);
+Route::get('/totalticket',[MainController::class,'totalticket']);
+Route::get('/raisedticket',[MainController::class,'raisedticket']);
+Route::get('/processingticket',[MainController::class,'processingticket']);
+Route::get('/closedticket',[MainController::class,'closedticket']);
+Route::get('/createCategory',[MainController::class,'createCategory']);
 
 
 

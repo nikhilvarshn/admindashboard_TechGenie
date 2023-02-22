@@ -25,3 +25,6 @@ Route::post('findplanstatus',[APIController::class,'findplanstatus']);
 Route::post('raiseticket',[APIController::class,'raiseticket']);
 Route::post('fetchticket',[APIController::class,'fetchTicket']);
 Route::post('get_transaction',[APIController::class,'getTransaction']);
+Route::post('createCategory',[APIController::class,'createCategory']);
+Route::get('showCategoryData',[APIController::class,'showCategoryData']);
+Route::get('deleteCategoryData/{id}',[APIController::class,'deleteCategoryData']);

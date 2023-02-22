@@ -39,6 +39,21 @@
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="/plans"><i data-feather="users"></i><span>Plan's</span></a></li>
               <li class="sidebar-main-title">
                 <div>
+                  <h6>Ticket's</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/totalticket"><i data-feather="users"></i><span>Total Ticket's</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/raisedticket"><i data-feather="users"></i><span>Raised Ticket's</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/processingticket"><i data-feather="users"></i><span>Processing Ticket's</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/closedticket"><i data-feather="users"></i><span>Closed Ticket's</span></a></li>
+              <li class="sidebar-main-title">
+                <div>
+                  <h6>Categories</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/createCategory"><i data-feather="users"></i><span>Category</span></a></li>
+              <li class="sidebar-main-title">
+                <div>
                   <h6>General</h6>
                 </div>
               </li>
