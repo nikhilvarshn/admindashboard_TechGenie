@@ -5,14 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MentorController;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ActiveUserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisteredController;
 use App\Http\Controllers\TotalTicketController;
 use App\Http\Controllers\ClosedTicketController;
 use App\Http\Controllers\InactiveUserController;
 use App\Http\Controllers\RaisedTicketController;
-use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\InprogressTicketController;
 
 
@@ -73,26 +72,10 @@ Route::controller(LoginController::class)->group(function (){
     Route::get('/login', 'index');
 });
 
-
-
-
-
-
-
-// Route::get('/qualification', [QualificationController::class, 'index'])->name('home');
-
-Route::controller(QualificationController::class)->group(function () {
-    Route::get('/qualification', 'index');
-    Route::post('/qualification', 'store');
-    Route::get('/getQualificationData', 'show'); 
-    Route::get('/qualification/edit/{id}', 'edit');
-    Route::get('/qualification/delete/{id}', 'destroy');
-});
-
-Route::controller(StudentController::class)->group(function () {
-    Route::get('/student', 'index');
-    Route::post('/student', 'store');
-    Route::get('/getStudentData', 'show'); 
-    Route::get('/student/edit/{id}', 'edit');
-    Route::get('/student/delete/{id}', 'destroy');
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category', 'index');
+    Route::post('/category', 'store');
+    Route::get('/getCategoryData', 'show'); 
+    Route::get('/category/edit/{id}', 'edit');
+    Route::get('/category/delete/{id}', 'destroy');
 });

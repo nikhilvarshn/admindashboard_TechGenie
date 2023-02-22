@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Add New Mentor</h4>
+                <h4 class="modal-title" id="myLargeModalLabel">Add New Category</h4>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -13,30 +13,12 @@
                         <div class="row justify-content-center">
                             {{csrf_field()}}
 
-                            {!! Form::hidden('mentor_id', '', ['id'=>'mentor_id']); !!}
+                            {!! Form::hidden('category_id', '', ['id'=>'category_id']); !!}
 
                             <div class="col-sm-4 col-xs-12">
-                                <label for="title">Name  :</label>
-                                {!! Form::text('title', '', ['class'=>"form-control", 'id'=>"title", 'placeholder'=>"Enter Mentor Name", 'required']); !!} <br>
+                                <label for="title">Category  :</label>
+                                {!! Form::text('title', '', ['class'=>"form-control", 'id'=>"title", 'placeholder'=>"Enter Category Name", 'required']); !!} <br>
                                 <span class="text-danger" id="title-error"></span>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="email">Email  :</label>
-                                {!! Form::text('email', '', ['class'=>"form-control", 'id'=>"email", 'placeholder'=>"Enter Mentor Email", 'required']); !!} <br>
-                                <span class="text-danger" id="email-error"></span>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="password">Password  :</label>
-                                {!! Form::text('password', '', ['class'=>"form-control", 'id'=>"password", 'placeholder'=>"Enter Mentor Password", 'required']); !!} <br>
-                                <span class="text-danger" id="password-error"></span>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="category">Category  :</label>
-                                {!! Form::text('category', '', ['class'=>"form-control", 'id'=>"category", 'placeholder'=>"Enter Category of Mentor", 'required']); !!} <br>
-                                <span class="text-danger" id="category-error"></span>
                             </div>
 
                             <div class="col-sm-4 col-xs-12">
@@ -52,7 +34,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" onclick="closeModal()">Close</button>
-                {!! Form::submit('Add Mentor', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
+                {!! Form::submit('Add Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
             </div>
         </div>
     </div>

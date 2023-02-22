@@ -29,6 +29,14 @@
                 </div>
               </li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="/mentor"><i data-feather="users"></i><span>Mentor</span></a></li>
+
+              <li class="sidebar-main-title">
+                <div>
+                  <h6>Category</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/category"><i data-feather="users"></i><span>Category</span></a></li>
+
               <li class="sidebar-main-title">
                 <div>
                   <h6>Ticket's</h6>
