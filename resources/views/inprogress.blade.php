@@ -73,6 +73,7 @@ $(document).ready(function(){
             }
             if(c==='3'){
                 this.data('<span style="color:red">Closed</span>');
+
             }
         });
     }).draw();

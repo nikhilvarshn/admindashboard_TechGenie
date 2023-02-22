@@ -23,6 +23,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Password</th>
+
                             <th>Category</th>
                             <th>Status</th>
                             <th>Updated At</th>

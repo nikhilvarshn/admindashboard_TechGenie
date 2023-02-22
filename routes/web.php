@@ -15,6 +15,7 @@ use App\Http\Controllers\RaisedTicketController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\InprogressTicketController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
