@@ -18,7 +18,7 @@
 </div>
 <script>
     $(document).ready( function () {
-        
+        document.getElementById('fir').classList.add('active');
     let dol=$('#myTable').DataTable({
         data:<?php echo $reg?>,
         columnDefs: [

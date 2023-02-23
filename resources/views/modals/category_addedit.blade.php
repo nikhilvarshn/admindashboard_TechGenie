@@ -16,7 +16,7 @@
 
                             {{csrf_field()}}
 
-                            <!-- {!! Form::hidden('qualification_id', '', ['id'=>'qualification_id']); !!} -->
+                            {!! Form::hidden('cid', '', ['id'=>'category_id']); !!}
                             
                             <div class="col-sm-4 col-xs-12">
                                 <label for="title">Category Name :</label>
@@ -41,9 +41,9 @@
           }
         </style>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" onclick="closeModal()">Close</button>
+          <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" >Close</button>
           {!! Form::submit('Add Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn','onclick'=>'subdata();','data-bs-dismiss'=>'modal']); !!}
-          {!! Form::submit('Add Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'editBtn','onclick'=>'subdata();','data-bs-dismiss'=>'modal']); !!}
+          {!! Form::submit('Edit Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'editBtn','onclick'=>'editdata();','data-bs-dismiss'=>'modal']); !!}
         </div>
       </div>
     </div>

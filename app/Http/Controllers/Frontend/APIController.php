@@ -8,9 +8,11 @@ use App\Models\Userdetail;
 use App\Models\Plan;
 use App\Models\Categorie;
 use App\Models\Transaction;
+use App\Models\Mregister;
 use App\Models\Ticket;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 class APIController extends Controller
 {
     public function userdetails(Request $req){
@@ -399,4 +401,87 @@ else{
             'error'=>true
         ]);
     }
+    public function getcategory($id){
+        $c=Categorie::find($id);
+        return response()->json([
+            'data'=>$c
+        ]);
+    }
+    public function editcategory(Request $req){
+        $req->validate([
+            'id'=>'required',
+            'name'=>'required'
+        ]);
+        $c=Categorie::find($req->id);
+        if($c){
+            $c->name=$req->name;
+            $c->save();
+            return response()->json([
+                'data'=>$c
+            ]);
+        }
+        return response()->json([
+            'data'=>[]
+        ]);
+    }
+    public function createMentor(Request $req){
+        $req->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required|confirmed',
+            'category_id'=>'required'
+        ]);
+        $user=Mregister::updateOrCreate([
+            'email'=>$req->email,
+        ],[
+            'name'=>$req->name,
+            'password'=>Hash::make($req->password),
+            'category_id'=>$req->category_id
+        ]);
+        if($user){
+            return response()->json([
+                'msg'=>'data added sucessfully!',
+                'data'=>$user,
+                'status'=>true,
+                'error'=>false,
+            ]);
+        }
+        return response()->json([
+            'msg'=>'data added sucessfully!',
+            'data'=>$user,
+            'status'=>true,
+            'error'=>true
+        ]);
+
+    }
+    public function getMentor($id){
+       $u=Mregister::find($id);
+       return response()->json([
+        'data'=>$u
+       ]);
+    }
+    public function editmentor(Request $req){
+        $req->validate([
+            'id'=>'required',
+            'category_id'=>'required'
+        ]);
+        $c=Mregister::find($req->id);
+        if($c){
+            $c->category_id=$req->category_id;
+            $c->save();
+            return response()->json([
+                'data'=>$c
+            ]);
+        }
+        return response()->json([
+            'data'=>[]
+        ]);
+    }
+    public function deletementor($id){
+        $m=Mregister::find($id);
+        if($m){
+            $m->delete();
+        }
+    }
+    
 }

@@ -39,11 +39,17 @@
   </div>
   <script>
     let showSaveBtn=()=>{
+        let tit=document.getElementById('myLargeModalLabel');
         let sbtn=document.getElementById('saveBtn');
         let ebtn=document.getElementById('editBtn');
+        let cn=document.getElementById('cn');
+        cn.value="";
+        tit.innerHTML="Add New Category";
         sbtn.classList.remove('removebtn');
         ebtn.classList.add('removebtn');
     }
+    
+    
   </script>
   <script>
     let resd=[];
@@ -119,7 +125,7 @@
             this.data(i++);
             });
             v.cells(null, 2, { search: 'applied', order: 'applied' }).every(function (cell) {
-                this.data(`<div class="edit" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" style="margin:0px;width:26px;height:26px;border-radius:13px;background-color:green;color:#fff;cursor:pointer;display:flex;justify-content:center;align-items:center;"><i class="bi bi-pencil-square"></i></div>&nbsp;&nbsp;<div class="myc" style="margin:0px;width:26px;height:26px;border-radius:13px;background-color:red;color:#fff;cursor:pointer;display:flex;justify-content:center;align-items:center;"><i class="bi bi-trash3"></i></div>`)
+                this.data(`<div class="editm" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" style="margin:0px;width:26px;height:26px;border-radius:13px;background-color:green;color:#fff;cursor:pointer;display:flex;justify-content:center;align-items:center;"><i class="bi bi-pencil-square"></i></div>&nbsp;&nbsp;<div class="myc" style="margin:0px;width:26px;height:26px;border-radius:13px;background-color:red;color:#fff;cursor:pointer;display:flex;justify-content:center;align-items:center;"><i class="bi bi-trash3"></i></div>`)
             // c===1?this.data('Active'):this.data('in-Active');
             });
         }).draw();
@@ -148,6 +154,58 @@
         }
         });
    });
+   $('#datatable').on('click','.editm',function(){
+        
+        let pid=this.parentElement.getAttribute('id');
+        let tit=document.getElementById('myLargeModalLabel');
+        let sbtn=document.getElementById('saveBtn');
+        let ebtn=document.getElementById('editBtn');
+        let cn=document.getElementById('cn');
+        let ch=document.getElementById('category_id');
+        ch.value=pid;
+        tit.innerHTML="Edit Category";
+        sbtn.classList.add('removebtn');
+        ebtn.classList.remove('removebtn');
+        let xhr=new XMLHttpRequest();
+        xhr.open('GET',`/api/getcategory/${pid}`);
+        xhr.onreadystatechange=()=>{
+            if(xhr.readyState===4){
+                if(xhr.status>199 && xhr.status<300){
+                    let tem=JSON.parse(xhr.response);
+                    cn.value=tem.data.name;
+                }
+                else{
+                    console.log('Some Error');
+                    
+                }
+            }
+        }
+        xhr.send();
+
+    });
+    let ecn=()=>{
+        let cn=document.getElementById('cn');
+        let ch=document.getElementById('category_id');
+        return {id:ch.value,name:cn.value};
+    }
+    function editdata(){
+        let xhr=new XMLHttpRequest();
+        xhr.open('POST','/api/editcategory');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.onreadystatechange=()=>{
+            if(xhr.readyState===4){
+                if(xhr.status>199 && xhr.status<300){
+                    let tem=JSON.parse(xhr.response);
+                    location.reload();
+                }
+                else{
+                    console.log('Some Error');
+                    
+                }
+            }
+        }
+        xhr.send(JSON.stringify(ecn()));
+    }
   </script>
 
 @endsection

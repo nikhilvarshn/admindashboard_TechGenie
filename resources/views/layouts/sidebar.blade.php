@@ -14,7 +14,7 @@
                   <h6>User's </h6>
                 </div>
               </li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/total_users"><i data-feather="users"></i><span>Total User</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="{{url('/')}}" id="fir"><i data-feather="users"></i><span>Total User</span></a></li>
               <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/activeuser"><i data-feather="users"></i><span>Active User</span></a></li>
               <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/inactiveuser"><i data-feather="users"></i><span>Inactive User</span></a></li>
 
@@ -52,6 +52,12 @@
                 </div>
               </li>
               <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/createCategory"><i data-feather="users"></i><span>Category</span></a></li>
+              <li class="sidebar-main-title">
+                <div>
+                  <h6>Mentor's</h6>
+                </div>
+              </li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/totalmentors"><i data-feather="users"></i><span>Total Mentor's</span></a></li>
               <li class="sidebar-main-title">
                 <div>
                   <h6>General</h6>

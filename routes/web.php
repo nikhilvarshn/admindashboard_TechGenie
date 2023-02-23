@@ -22,7 +22,7 @@ use App\Http\Controllers\Backend\MainController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('home');
+// Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
 Route::controller(RegisteredController::class)->group(function (){
@@ -38,7 +38,8 @@ Route::controller(RegisteredController::class)->group(function (){
 // Route::controller(InactiveUserController::class)->group(function (){
 //     Route::get('/inactiveuser', 'index');
 // });
-Route::get('/total_users',[MainController::class,'totaluser']);
+// total_users
+Route::get('/',[MainController::class,'index'])->name('home');
 Route::get('/activeuser',[MainController::class,'activeuser']);
 Route::get('/inactiveuser',[MainController::class,'inactiveuser']);
 Route::get('/transaction_history',[MainController::class,'transaction_history']);
@@ -48,6 +49,7 @@ Route::get('/raisedticket',[MainController::class,'raisedticket']);
 Route::get('/processingticket',[MainController::class,'processingticket']);
 Route::get('/closedticket',[MainController::class,'closedticket']);
 Route::get('/createCategory',[MainController::class,'createCategory']);
+Route::get('/totalmentors',[MainController::class,'totalmentor']);
 
 
 

@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use App\Models\Categorie;
+use App\Models\Mregister;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class MainController extends Controller
 {
-    public function totaluser(Request $req){
+    public function index(Request $req){
         $reg=Register::all();
          return view('total_user',compact('reg'));
     }
@@ -86,4 +88,10 @@ class MainController extends Controller
        return view('category');
 
     }
+   
+    public function totalmentor(Request $req){
+        $user=Mregister::all();
+        return view('total_mentors',compact('user'));
+    }
+
 }
