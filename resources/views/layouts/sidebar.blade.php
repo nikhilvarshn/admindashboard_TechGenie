@@ -14,14 +14,14 @@
               {{-- <li class="back-btn">
                 <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
               </li> --}}
-              <li class="sidebar-main-title">
+              {{-- <li class="sidebar-main-title">
                 <div>
                   <h6>User's </h6>
                 </div>
               </li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="/registered"><i data-feather="users"></i><span>Total User</span></a></li>
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="/activeuser"><i data-feather="users"></i><span>Active User</span></a></li>
-              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/inactiveuser"><i data-feather="users"></i><span>Inactive User</span></a></li>
+              <li class="dropdown"><a class="nav-link menu-title link-nav" href="/inactiveuser"><i data-feather="users"></i><span>Inactive User</span></a></li> --}}
 
               <li class="sidebar-main-title">
                 <div>
