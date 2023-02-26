@@ -11,6 +11,7 @@ use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\RegisteredController;
 use App\Http\Controllers\Backend\MainController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,13 @@ Route::controller(RegisteredController::class)->group(function (){
 //     Route::get('/inactiveuser', 'index');
 // });
 // total_users
-Route::get('/',[MainController::class,'index'])->name('home');
+
+Route::middleware(['myauth'])->group(function(){
+
+
+
+Route::get('/',[MainController::class,'index']);
+Route::get('/totaluser',[MainController::class,'totaluser']);
 Route::get('/activeuser',[MainController::class,'activeuser']);
 Route::get('/inactiveuser',[MainController::class,'inactiveuser']);
 Route::get('/transaction_history',[MainController::class,'transaction_history']);
@@ -50,8 +57,10 @@ Route::get('/processingticket',[MainController::class,'processingticket']);
 Route::get('/closedticket',[MainController::class,'closedticket']);
 Route::get('/createCategory',[MainController::class,'createCategory']);
 Route::get('/totalmentors',[MainController::class,'totalmentor']);
+Route::get('/logout',[MainController::class,'logout']);
+Route::post('/',[MainController::class,'adminlogin']);
 
-
+});
 
 
 

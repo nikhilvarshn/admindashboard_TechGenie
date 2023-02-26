@@ -10,6 +10,7 @@ use App\Models\Categorie;
 use App\Models\Transaction;
 use App\Models\Mregister;
 use App\Models\Ticket;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -482,6 +483,16 @@ else{
         if($m){
             $m->delete();
         }
+    }
+    public function createAdmin(Request $req){
+       $u=User::create([
+        'name'=>$req->name,
+        'email'=>$req->email,
+        'password'=>Hash::make($req->password)
+       ]);
+       return response()->json([
+        'data'=>$u
+       ]);
     }
     
 }
