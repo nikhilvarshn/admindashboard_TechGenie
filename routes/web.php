@@ -4,12 +4,15 @@ use App\Http\Controllers\ActiveUserController;
 use App\Http\Controllers\InactiveUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\RegisteredController;
 use App\Http\Controllers\Backend\MainController;
+use App\Mail\MyMail;
+// use Illuminate\Mail\Mailer;
 
 
 /*
@@ -59,6 +62,11 @@ Route::get('/createCategory',[MainController::class,'createCategory']);
 Route::get('/totalmentors',[MainController::class,'totalmentor']);
 Route::get('/logout',[MainController::class,'logout']);
 Route::post('/',[MainController::class,'adminlogin']);
+// Route::get('/mymail',function(){
+//     // Mail::to('shivamtiwari.shivatiwari@gmail.com')->send(new MyMail());
+    
+//     return 'done';
+// });
 
 });
 

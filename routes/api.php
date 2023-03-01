@@ -35,3 +35,4 @@ Route::get('getmentor/{id}',[APIController::class,'getMentor']);
 Route::post('editmentor',[APIController::class,'editmentor']);
 Route::get('deletementor/{id}',[APIController::class,'deletementor']);
 Route::post('createAdmin',[APIController::class,'createAdmin']);
+Route::post('attendsession',[APIController::class,'attendSession']);

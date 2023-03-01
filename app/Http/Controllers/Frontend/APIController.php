@@ -10,10 +10,13 @@ use App\Models\Categorie;
 use App\Models\Transaction;
 use App\Models\Mregister;
 use App\Models\Ticket;
+use App\Models\Register;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\MyMail;
 class APIController extends Controller
 {
     public function userdetails(Request $req){
@@ -493,6 +496,39 @@ else{
        return response()->json([
         'data'=>$u
        ]);
+    }
+    public function attendSession(Request $req){
+        $req->validate([
+            'id'=>'required',
+            'mentor_id'=>'required',
+            'google_meet_link'=>'required',
+            'msg_box'=>'required'
+
+        ]);
+        $u=Ticket::where('id',$req->id)->where('ticket_status','1')->first();
+        if($u){
+           
+            $m=Mregister::find($req->mentor_id);
+            if($m){
+                
+                $u->mentor_id=$req->mentor_id;
+                $u->google_meet_link=$req->google_meet_link;
+                $u->save();
+                $r=Register::find($u->user_id);
+                $arrayName = array('name' =>$r->full_name,'link'=>$req->google_meet_link,'msgbox'=>$req->msg_box,'userdt'=>$u->date_and_time,'mname'=>$m->name);
+                Mail::to($r->email)->bcc(['shivamtiwari.shivatiwari@gmail.com','shivamtiwari.pc@gmail.com'])->send(new MyMail($arrayName));
+                return response()->json([
+                    'msg'=>'Check your mail!',
+                    'error'=>false,
+                    'status'=>true
+                ]);
+            }
+        }
+        return response()->json([
+            'msg'=>'Sorry, some error from your side!',
+            'error'=>true,
+            'status'=>true
+        ]);
     }
     
 }
