@@ -47,9 +47,10 @@
                                 <span class="text-danger" id="title-error"></span>
                             </div>
 
+
                             <!-- <div class="col-sm-4 col-xs-12">
                                 <label for="status">Status :</label>
-                                {!! Form::select('status', $status, '', ['class'=>'standardSelect form-control', 'title'=>'Select ', 'data-live-search'=>'true', 'id'=>'status' , 'data-style'=>'btn-sp', 'data-dropup-auto'=>'false', 'data-size'=>'5']) !!}<br>
+                                {!! Form::select('status', $status, '', ['class'=>'standardSelect form-control', 'title'=>'Select ', 'placeholder'=>"Select the status", 'data-live-search'=>'true', 'id'=>'status' , 'data-style'=>'btn-sp', 'data-dropup-auto'=>'false', 'data-size'=>'5']) !!}<br>
                                 <span class="text-danger" id="status-error"></span>
                             </div> -->
 
@@ -62,6 +63,7 @@
                 <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" >Close</button>
                 {!! Form::submit('Submit', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn','onclick'=>'sub();']); !!}
                 {!! Form::submit('Edit Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'editBtn','onclick'=>'editd();','data-bs-dismiss'=>'modal']); !!}
+
             </div>
         </div>
     </div>

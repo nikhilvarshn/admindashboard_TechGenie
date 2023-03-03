@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\ActiveUserController;
-use App\Http\Controllers\InactiveUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MentorController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\ActiveUserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisteredController;
 use App\Http\Controllers\Backend\MainController;
 use App\Mail\MyMail;
 // use Illuminate\Mail\Mailer;
+
 
 
 /*
@@ -31,7 +31,7 @@ use App\Mail\MyMail;
 
 Route::controller(RegisteredController::class)->group(function (){
     Route::get('/registered', 'index');
-    Route::get('/getRegisteredData', 'show');
+    Route::get('/getRegistered', 'getRegistered');
 });
 
 
@@ -44,9 +44,20 @@ Route::controller(RegisteredController::class)->group(function (){
 // });
 // total_users
 
+
 Route::middleware(['myauth'])->group(function(){
 
+Route::controller(MentorController::class)->group(function () {
+    Route::get('/mentor', 'index');
+    Route::post('/mentor', 'store');
+    Route::get('/getMentorData', 'show'); 
+    Route::get('/mentor/edit/{id}', 'edit');
+    Route::get('/mentor/delete/{id}', 'destroy');
+});
 
+Route::controller(TotalTicketController::class)->group(function () {
+    Route::get('/totaltickets', 'index');
+});
 
 Route::get('/',[MainController::class,'index']);
 Route::get('/totaluser',[MainController::class,'totaluser']);
@@ -71,29 +82,22 @@ Route::post('/',[MainController::class,'adminlogin']);
 });
 
 
-
-
-
-
-
-
-
-
-
-// Route::get('/qualification', [QualificationController::class, 'index'])->name('home');
-
-Route::controller(QualificationController::class)->group(function () {
-    Route::get('/qualification', 'index');
-    Route::post('/qualification', 'store');
-    Route::get('/getQualificationData', 'show'); 
-    Route::get('/qualification/edit/{id}', 'edit');
-    Route::get('/qualification/delete/{id}', 'destroy');
+Route::controller(ClosedTicketController::class)->group(function () {
+    Route::get('/closedtickets', 'index');
 });
 
-Route::controller(StudentController::class)->group(function () {
-    Route::get('/student', 'index');
-    Route::post('/student', 'store');
-    Route::get('/getStudentData', 'show'); 
-    Route::get('/student/edit/{id}', 'edit');
-    Route::get('/student/delete/{id}', 'destroy');
+Route::controller(InprogressTicketController::class)->group(function () {
+    Route::get('/inprogresstickets', 'index');
+});
+
+Route::controller(LoginController::class)->group(function (){
+    Route::get('/login', 'index');
+});
+
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category', 'index');
+    Route::post('/category', 'store');
+    Route::get('/getCategoryData', 'show'); 
+    Route::get('/category/edit/{id}', 'edit');
+    Route::get('/category/delete/{id}', 'destroy');
 });

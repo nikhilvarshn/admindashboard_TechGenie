@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mentor;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
-class MentorController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class MentorController extends Controller
      */
     public function index()
     { 
-        return view('mentor');
+        return view('category');
     }
 
     /**
@@ -37,30 +37,24 @@ class MentorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title'=>'required',
-                                    'email'=>'required',
-                                    'password'=>'required',
-                                    'category'=>'required',
                                     'status'=>'required'
                                 ]); 
 
-        $mentor = Mentor::updateOrCreate(
-                                    ['id' => $request->mentor_id],
+        $category = Category::updateOrCreate(
+                                    ['id' => $request->category_id],
                                     [
                                         'title' => ucwords($request->title),
-                                        'email' => ($request->email),
-                                        'password' => ($request->password),
-                                        'category' => ucwords($request->category),
                                         'status' => $request->status,
                                     ]
                                 );       
         
-        if($request->mentor_id){
+        if($request->category_id){
             $msg = "Updated Successfully.";
         }
         else{
-            $mentor = Mentor::find($mentor->id);
-            $mentor->mtrid = "MTR-".$mentor->id;
-            $mentor->save();
+            $category = Category::find($category->id);
+            $category->ctrid = "CTR-".$category->id;
+            $category->save();
             $msg = "Added Successfully";
         }
         return response()->json(['msg'=>$msg]);
@@ -74,7 +68,7 @@ class MentorController extends Controller
      */
     public function show()
     {
-        $data = Mentor::latest()->get();   
+        $data = Category::latest()->get();   
         
         return DataTables::of($data)
             ->addIndexColumn()
@@ -96,8 +90,8 @@ class MentorController extends Controller
             }) 
             ->addColumn('action', function($row){
 
-                $btn = '<abbr title="Edit" style="margin:5px;cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="top"><a class="editmentor" data-id="'.$row->id.'" ><i class="fa fa-pencil"></i></a></abbr>';
-                $btn = $btn.'<abbr style="margin:5px;color:red;cursor:pointer;" title="Delete" data-bs-toggle="tooltip" data-bs-placement="top" ><a class="delmentor" data-id="'.$row->id.'"><i class="fa fa-trash-o" style="color:red;"></i></a></abbr>';
+                $btn = '<abbr title="Edit" style="margin:5px;cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="top"><a class="editcategory" data-id="'.$row->id.'" ><i class="fa fa-pencil"></i></a></abbr>';
+                $btn = $btn.'<abbr style="margin:5px;color:red;cursor:pointer;" title="Delete" data-bs-toggle="tooltip" data-bs-placement="top" ><a class="delcategory" data-id="'.$row->id.'"><i class="fa fa-trash-o" style="color:red;"></i></a></abbr>';
 
                 return $btn;
             })
@@ -113,7 +107,7 @@ class MentorController extends Controller
      */
     public function edit($id)
     {
-        $data = Mentor::find($id);  
+        $data = Category::find($id);  
         return response()->json($data);
     }
 
@@ -137,7 +131,7 @@ class MentorController extends Controller
      */
     public function destroy($id)
     {
-        $del = Mentor::find($id)->delete();
-        return response()->json(['success'=>'Mentor deleted successfully.']);
+        $del = Category::find($id)->delete();
+        return response()->json(['success'=>'Category deleted successfully.']);
     }
 }

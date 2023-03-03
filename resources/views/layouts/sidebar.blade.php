@@ -8,8 +8,8 @@
             <ul class="nav-menu custom-scrollbar" style="height:100%;padding-bottom:120px;">
               <li class="back-btn">
                 <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-              </li>
-              <li class="sidebar-main-title">
+              </li> --}}
+              {{-- <li class="sidebar-main-title">
                 <div>
                   <h6>User's </h6>
                 </div>
@@ -23,6 +23,7 @@
                   <h6>Transaction's</h6>
                 </div>
               </li>
+
               <li class="dropdown"><a class="nav-link menu-title link-nav" href="/transaction_history"><i data-feather="users"></i><span>Transaction History</span></a></li>
               {{-- <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                 <ul class="nav-submenu menu-content">
@@ -31,6 +32,7 @@
                   <li><a href="/inactiveuser">Inactive User</a></li>
                 </ul>
               </li> --}}
+
               <li class="sidebar-main-title">
                 <div>
                   <h6>Plan's</h6>
@@ -58,6 +60,7 @@
                 </div>
               </li>
               <li class="dropdown"><a class="nav-link menu-title link-nav my-2" href="/totalmentors"><i data-feather="users"></i><span>Total Mentor's</span></a></li>
+
             </ul>
             <br>
             <br>

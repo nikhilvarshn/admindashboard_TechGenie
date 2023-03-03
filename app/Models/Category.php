@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Yajra\Auditable\AuditableWithDeletesTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Mentor extends Model
+class Category extends Model
 {
-        use HasFactory, AuditableWithDeletesTrait, SoftDeletes;
+    use HasFactory, AuditableWithDeletesTrait, SoftDeletes;
 
-        protected $table = 'mentors';
+        protected $table = 'categories';
         protected $fillable = [
-        'mtrid',
+        'ctrid',
         'title',
-        'email',
-        'password',
-        'category',
         'status',
         ];
 }

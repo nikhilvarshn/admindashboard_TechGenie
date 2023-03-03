@@ -5,6 +5,7 @@
 <div class="page-body">
     <!-- Container-fluid starts-->
     <div class="container-fluid dashboard-default-sec">
+
       <div class="row">
 
         <div class="card">
@@ -209,4 +210,3 @@
   </script>
 
 @endsection
-
