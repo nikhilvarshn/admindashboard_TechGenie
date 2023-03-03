@@ -2,6 +2,11 @@
 
 <div class="modal fade bd-example-modal-lg" id="ajaxModel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
+    <style>
+          .removeElement{
+            display:none;
+          }
+        </style>
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">Add New Mentor</h4>
@@ -15,35 +20,39 @@
 
                             {!! Form::hidden('mentor_id', '', ['id'=>'mentor_id']); !!}
 
+                            <div class="col-sm-4 col-xs-12" id="mnamed">
+                                <label for="title">Mentor Name  :</label>
+                                {!! Form::text('name', '', ['class'=>"form-control", 'id'=>"mname", 'placeholder'=>"Enter Mentor Name", 'required']); !!} <br>
+                                <span class="text-danger" id="title-error"></span>
+                            </div>
+                            <div class="col-sm-4 col-xs-12" id="memaild">
+                                <label for="title">Mentor Email  :</label>
+                                {!! Form::text('email', '', ['class'=>"form-control", 'id'=>"memail", 'placeholder'=>"Enter Email", 'required']); !!} <br>
+                                <span class="text-danger" id="title-error"></span>
+                            </div>
+                            <div class="col-sm-4 col-xs-12" id="mpasswordd">
+                                <label for="title">Mentor Password  :</label>
+                                {!! Form::text('password', '', ['class'=>"form-control", 'id'=>"mpassword", 'placeholder'=>"Enter Mentor Name", 'required']); !!} <br>
+                                <span class="text-danger" id="title-error"></span>
+                            </div>
+                            <div class="col-sm-4 col-xs-12" id="mcpasswordd">
+                                <label for="title">Confirm Password  :</label>
+                                {!! Form::text('password_confirmation', '', ['class'=>"form-control", 'id'=>"mcpassword", 'placeholder'=>"Enter Mentor Name", 'required']); !!} <br>
+                                <span class="text-danger" id="title-error"></span>
+                            </div>
                             <div class="col-sm-4 col-xs-12">
-                                <label for="title">Name  :</label>
-                                {!! Form::text('title', '', ['class'=>"form-control", 'id'=>"title", 'placeholder'=>"Enter Mentor Name", 'required']); !!} <br>
+                                <label for="title">Choose Category  :</label>
+                                <select name="" id="cat" class="form-control"></select>
+                                <br>
                                 <span class="text-danger" id="title-error"></span>
                             </div>
 
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="email">Email  :</label>
-                                {!! Form::text('email', '', ['class'=>"form-control", 'id'=>"email", 'placeholder'=>"Enter Mentor Email", 'required']); !!} <br>
-                                <span class="text-danger" id="email-error"></span>
-                            </div>
 
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="password">Password  :</label>
-                                {!! Form::text('password', '', ['class'=>"form-control", 'id'=>"password", 'placeholder'=>"Enter Mentor Password", 'required']); !!} <br>
-                                <span class="text-danger" id="password-error"></span>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <label for="category">Category  :</label>
-                                {!! Form::text('category', '', ['class'=>"form-control", 'id'=>"category", 'placeholder'=>"Enter Category of Mentor", 'required']); !!} <br>
-                                <span class="text-danger" id="category-error"></span>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
+                            <!-- <div class="col-sm-4 col-xs-12">
                                 <label for="status">Status :</label>
                                 {!! Form::select('status', $status, '', ['class'=>'standardSelect form-control', 'title'=>'Select ', 'placeholder'=>"Select the status", 'data-live-search'=>'true', 'id'=>'status' , 'data-style'=>'btn-sp', 'data-dropup-auto'=>'false', 'data-size'=>'5']) !!}<br>
                                 <span class="text-danger" id="status-error"></span>
-                            </div>
+                            </div> -->
 
                             <br>
                         </div>
@@ -51,8 +60,10 @@
                 {!! Form::close(); !!}
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" onclick="closeModal()">Close</button>
-                {!! Form::submit('Add Mentor', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn']); !!}
+                <button class="btn btn-secondary" type="button"  data-bs-dismiss = "modal" >Close</button>
+                {!! Form::submit('Submit', ['class'=>'btn btn-primary btn-rounded', 'id'=>'saveBtn','onclick'=>'sub();']); !!}
+                {!! Form::submit('Edit Category', ['class'=>'btn btn-primary btn-rounded', 'id'=>'editBtn','onclick'=>'editd();','data-bs-dismiss'=>'modal']); !!}
+
             </div>
         </div>
     </div>

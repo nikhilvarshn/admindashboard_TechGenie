@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shop', function (Blueprint $table) {
-            $table->id('shop_id');
-            $table->string('name',60);
-            $table->string('email',50);
-            $table->enum('gender', ["Male","Female","Others"]);
-            $table->text('address');
-            $table->date('dob');
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_id');
+            $table->string('plan_id');
+            $table->string('purchase_date');
+            $table->string('expire_date');
+            $table->string('plan_status')->default('1');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop');
+        Schema::dropIfExists('transactions');
     }
 };

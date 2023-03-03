@@ -11,15 +11,12 @@
                 <th>User_id</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Mobile No.</th>
-                <th>School/college Name</th>
-                <th>Course/Class Name</th>
-                <th>DOB</th>
-                <th>Gender</th>
-                <th>Plan_id</th>
-                <th>Purchase_date</th>
-                <th>Expire_date</th>
-                <th>Plan_status</th>
+                <th>Category</th>
+                <th>Question</th>
+                <th>Date and Time</th>
+                <th>Mentor Id</th>
+                <th>Google Meet Link</th>
+                <th>Ticket Status</th>
             </thead>
         </table>
     </div>
@@ -45,15 +42,12 @@
             {data:'user_id'},
             {data:'full_name'},
             {data:'email'},
-            {data:'mobile_no'},
-            {data:'coll_name'},
-            {data:'course_name'},
-            {data:'dob'},
-            {data:'gender'},
-            {data:'plan_id'},
-            {data:'purchase_date'},
-            {data:'expire_date'},
-            {data:'plan_status'},
+            {data:'category'},
+            {data:'question'},
+            {data:'date_and_time'},
+            {data:'mentor_id'},
+            {data:'google_meet_link'},
+            {data:'ticket_status'},
         ]
     });
     v.on('order.dt search.dt', function () {
@@ -61,15 +55,16 @@
         v.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
             this.data(i++);
         });
-        v.cells(null, 12, { search: 'applied', order: 'applied' }).every(function (cell) {
+        v.cells(null, 9, { search: 'applied', order: 'applied' }).every(function (cell) {
             let c=this.data();
-            
-             console.log(typeof c);
             if(c==='1'){
-                this.data('Active');
+                this.data('<span style="color:green">Raised</span>');
             }
-            if(c==='0'){
-                this.data('InActive');
+            if(c==='2'){
+                this.data('<span style="color:green">Inprocessing</span>');
+            }
+            if(c==='3'){
+                this.data('<span style="color:red">Closed</span>');
             }
            
             // c===1?this.data('Active'):this.data('in-Active');
